@@ -47,6 +47,7 @@
             gsap.from(block, {
                 yPercent: block.dataset.distance,
                 stagger: .3,
+                ease:"power4.out",
                 scrollTrigger:{
                     trigger: document.querySelector(".scroll"),
                     start:"top center",
