@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonkers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <section class="empty"> <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum aspernatur accusamus deserunt labore deleniti. Repellendus distinctio tempore sequi optio ad sit, praesentium incidunt. Voluptate aliquid suscipit quidem quasi explicabo soluta at numquam magnam esse velit.</p></section>
+
+    <section class="scroll">
+        <div class="wrapper">
+        <div class="col-left block" data-distance="200">
+            <h1 class="title">Fan <span>freakin</span> <span>tastic!</span></h1>
+            <h2 class="subtitle">Go bonkers.</h2>
+        </div>
+        <div class="col-right">
+            <div class="top block" data-distance="150">
+                <h3>Realize <span>this might</span> <span>be it.</span></h3>
+            </div>
+            <div class="bottom block" data-distance="10">
+                <h3>It's your <span>time to</span> <span>shine.</span></h3>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <section class="empty"></section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script>
+
+        const blocks = gsap.utils.toArray(".block")
+
+        blocks.forEach(block =>{
+            console.log(block.dataset.distance)
+            gsap.from(block, {
+                yPercent: block.dataset.distance,
+                stagger: .3,
+                scrollTrigger:{
+                    trigger: document.querySelector(".scroll"),
+                    start:"top center",
+                    end:"bottom bottom",
+                    scrub: true,
+                }
+            })
+        })
+
+
+        // smooth scroll
+
+        const lenis = new Lenis()
+
+        function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+
+    </script>
+</body>
+</html>
